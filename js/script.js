@@ -9,7 +9,8 @@
 $(document).ready(
   function(){
     var numbers = [];
-    var userNmr= [];
+    var userNmr = [];
+    var same = []
     for (var i = 0; i < 5; i++) {
       var remember = randomComputer(0, 9);
       console.log(remember);
@@ -22,13 +23,24 @@ $(document).ready(
       $(".square").text(time);
       time= time - 1;
 
-      if(time == -1)
-      for(i = 0; i < 5; i++){
-        var nmr = prompt("E' ora di testare la tua memoria. Inserisci i numeri: ");
-        userNmr.push(nmr);
+      if(time == -1){
+        clearInterval(countdown);
+        for(i = 0; i < 5; i++){
+          var nmr = prompt("E' ora di testare la tua memoria. Inserisci i numeri: ");
+          userNmr.push(nmr);
+        }
       }
-      console.log(userNmr)
+      console.log(userNmr);
+
+      for (i = 0; i < numbers.length; i++){
+        if (numbers[i]==userNmr[i]){
+          same.push(numbers[i]);
+        }
+        console.log(same + " questi sono i numeri che uguali")
+
+      }
     }, 1000)
+
   }
 )
 
